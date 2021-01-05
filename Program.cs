@@ -15,7 +15,8 @@ namespace TemperConverter
                 
                 Console.Write(" What is the temperature ?");
 
-                string tempInput = Console.ReadLine();
+                double tempInput = double.Parse(Console.ReadLine());
+                
                 
                 double fahrenheit = temp.Celsiustofarenheit(tempInput);
                 double celsius = temp.FarenheitToCelsius(tempInput);
@@ -24,7 +25,7 @@ namespace TemperConverter
 
                 string typeOfTemp = Console.ReadLine();
                 
-                if (typeOfTemp == "F" || typeOfTemp == "f" || typeOfTemp == "Farenheit" && fahrenheit >= 80.7)
+                if ( (typeOfTemp.Contains("F") && tempInput >= 80.7) )
                 {
                   
                         Console.WriteLine($"The {tempInput}, degrees Fahrenhit is {celsius} Celsius ");
@@ -34,7 +35,7 @@ namespace TemperConverter
                 {
                     Console.WriteLine($"The {tempInput}, degrees Fahrenhit is {celsius} Celsius ");
                 }
-                else if (typeOfTemp == "C" || typeOfTemp == "c" || typeOfTemp == "Celsius" && celsius >= 26.7)
+                else if ((typeOfTemp.Contains("C") && tempInput >= 26.7)) 
                 {
                  
                     Console.WriteLine($"The { tempInput}, degrees Fahrenhit is {fahrenheit} Fahrenheit ");
@@ -70,17 +71,17 @@ namespace TemperConverter
 
     class TemperatureConverter
     {
-        public double Celsiustofarenheit(string celsiustemp)
+        public double Celsiustofarenheit(double celsiustemp) 
         {
-            double celsius = double.Parse(celsiustemp);
+            double celsius = celsiustemp;
             double fahrenheit = (celsius * 9 / 5) + 32;
             fahrenheit = Math.Round(fahrenheit, 1);
             return fahrenheit;
         }
 
-        public double FarenheitToCelsius(string fahrenheitTemp)
+        public double FarenheitToCelsius(double fahrenheitTemp)
         {
-            double fahrenhit = double.Parse(fahrenheitTemp);
+            double fahrenhit = fahrenheitTemp;
             double celsius = (fahrenhit - 32) * 5 / 9;
             celsius = Math.Round(celsius, 1);
             return celsius;
